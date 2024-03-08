@@ -9,6 +9,7 @@ from inference import *
 import DeMoSeg
 join = os.path.join
 
+
 def predict_cases_DeMoSeg(model, list_of_lists, output_filenames, modality=14):
 
     pool = Pool(2)
@@ -34,7 +35,7 @@ def predict_cases_DeMoSeg(model, list_of_lists, output_filenames, modality=14):
                 d = data
 
             print("predicting", output_filename)
-            trainer.load_checkpoint_ram(params[0], False)
+            trainer.network.load_state_dict(params[0]['state_dict'])
             softmax = trainer.predict_preprocessed_data_return_seg_and_softmax(
                 d, do_mirroring=True, mirror_axes=(0,1,2), use_sliding_window=True,
                 step_size=0.5, use_gaussian=True, all_in_gpu=True,
@@ -80,7 +81,7 @@ def predict_DeMoSeg(model: str, input_folder: str, output_folder: str, modality:
     list_of_lists = [[join(input_folder, i) for i in all_files if i[:len(j)].startswith(j) and
                       len(i) == (len(j) + 12)] for j in case_ids]
     
-    return predict_cases_DeMoSeg(model, list_of_lists[0::1], output_files[0::1], modality)
+    return predict_cases_DeMoSeg(model, list_of_lists, output_files, modality)
 
 if __name__ == "__main__":
     predict_DeMoSeg(
