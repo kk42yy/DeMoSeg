@@ -53,7 +53,7 @@ The results with **bold** represent the best performance, and with <u>underline<
 
 Three dataset can be download at [BraTS](https://www.synapse.org/#!Synapse:syn27046444/wiki/616571), or [Kaggle](https://www.kaggle.com/datasets/awsaf49/brats20-dataset-training-validation?select=BraTS2020_ValidationData).
 
-1) We firstly release our [DeMoSeg Model](https://drive.google.com/file/d/199WPrwXMOPjF4wucU6TBptL9-4sgD9EN/view?usp=drive_link) on BraTS2020.
+1) We firstly release our [DeMoSeg Model](https://drive.google.com/file/d/1eItnFqxyJcJ5i6-FFCyFgCzqnJEmhCXm/view?usp=drive_link) on BraTS2020.
 
 2) We release the [infer code](Infer.py), and using `modality` $\in[0,14]$ to point the missing modality scenario. Before starting the inference, please develop the [relevant parameters](Infer.py/#L87) as below.
 
