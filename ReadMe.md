@@ -1,6 +1,12 @@
 # Decoupling Feature Representations of Ego and Other Modalities for Incomplete Multi-modal Brain Tumor Segmentation
 
-## Concrete results of BraTS2020, BraTS2018 and BraTS2015
+DeMoSeg, i.e., **De**coupling the task of representing the ego and other **Mo**dalities for robust incomplete multi-modal **Seg**mentation, consists of three major components, (i) feature decoupling of self and mutual expression for each modality, (ii) feature compensation based on clinical prior knowledge, and (iii) a U-Net backbone for tumor segmentation. By decoupling features, the learning burden of modality adaptation is reduced. The proposed novel layer named CSSA and the feature compensation strategy named RCR enable cross-guidance among features effectively. Significant improvements in results on multiple BraTS datasets have validated our method. These novel contributions are vital for brain tumor segmentation under missing-modality scenarios.
+
+## CONTENT: 
+- (1)[Concrete Results of BraTS2020, BraTS2018, BraTS2015](#1_Concrete_Results)
+- (2)[DeMoSeg Codes and Models](#2_DeMoSeg)
+
+## 1_Concrete_Results
 
 ### BraTS2020
 #### BraTS2020 contains 369 training cases which are split into 219, 50 and 100 subjects for training, validation and test, respectively.
@@ -42,3 +48,27 @@ The results with **bold** represent the best performance, and with <u>underline<
 | DeMoSeg                     |  **88.96**   |  **75.88**   |  66.17   | 
 
 <img src="BraTS20_18_15_Results\BraTS15.png" weight="50px" />
+
+## 2_DeMoSeg
+
+Three dataset can be download at [BraTS](https://www.synapse.org/#!Synapse:syn27046444/wiki/616571), or [Kaggle](https://www.kaggle.com/datasets/awsaf49/brats20-dataset-training-validation?select=BraTS2020_ValidationData).
+
+1) We firstly release our [DeMoSeg Model](https://drive.google.com/file/d/199WPrwXMOPjF4wucU6TBptL9-4sgD9EN/view?usp=drive_link) on BraTS2020.
+
+2) We release the [infer code](Infer.py), and using `modality` $\in[0,14]$ to point the missing modality scenario. Before starting the inference, please develop the [relevant parameters](Infer.py/#L87) as below.
+
+    ```python
+    def predict_DeMoSeg(
+        model='.../BraTS20_Model.pth', # model path
+        input_folder='...', # test images dir path
+        output_folder='...', # output dir path
+        modality=0 # missing modality situation index
+    )
+    ```
+
+3) Infer: 
+    ```python
+    python Infer.py
+    ```
+
+Our network and training codes will release later.
