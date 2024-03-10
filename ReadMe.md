@@ -6,7 +6,7 @@ DeMoSeg, i.e., **De**coupling the task of representing the ego and other **Mo**d
 - (1)[Concrete Results of BraTS2020, BraTS2018, BraTS2015](#1_Concrete_Results)
 - (2)[DeMoSeg Codes and Models](#2_DeMoSeg)
 
-## 1_Concrete_Results
+## 1_Concrete_Results 
 
 ### BraTS2020
 #### BraTS2020 contains 369 training cases which are split into 219, 50 and 100 subjects for training, validation and test, respectively.
@@ -51,24 +51,74 @@ The results with **bold** represent the best performance, and with <u>underline<
 
 ## 2_DeMoSeg
 
-Three dataset can be download at [BraTS](https://www.synapse.org/#!Synapse:syn27046444/wiki/616571), or [Kaggle](https://www.kaggle.com/datasets/awsaf49/brats20-dataset-training-validation?select=BraTS2020_ValidationData).
+We use three BraTS datasets that can be download at [BraTS](https://www.synapse.org/#!Synapse:syn27046444/wiki/616571), or [Kaggle](https://www.kaggle.com/datasets/awsaf49/brats20-dataset-training-validation?select=BraTS2020_ValidationData). Data splits are consistent with [RFNet](https://github.com/dyh127/RFNet/tree/main).
+Here we firstly release the infer code and models trained on BraTS.
 
-1) We firstly release our [DeMoSeg Model](https://drive.google.com/file/d/1eItnFqxyJcJ5i6-FFCyFgCzqnJEmhCXm/view?usp=drive_link) on BraTS2020.
+### 2.1 Inference of DeMoSeg
 
-2) We release the [infer code](Infer.py), and using `modality` $\in[0,14]$ to point the missing modality scenario. Before starting the inference, please develop the [relevant parameters](Infer.py/#L87) as below.
+1) Prepare the BraTS Dataset. Taking BraTS20 as an example, 100 testing cases should transformed into `nii.gz` format, and the suffix should obey following correspondence:
+    ```python
+        correspondence: dict = {
+            "T1"   : "_0000.nii.gz",
+            "T1ce" : "_0001.nii.gz",
+            "T2"   : "_0002.nii.gz",
+            "FLAIR": "_0003.nii.gz"
+        }
+    ```
+
+    Then, to better imitate the missing modality scenarios, and avoiding the impact from preprocessing, we mask the corresponding modality for each missing situation. You can use our provided [Nii_Mask.py](DeMoSeg/util/Nii_Mask.py), the transformed testing images may be as following:
+    
+        BraTS20/missing_imagesTs
+            ├── imagesTs_0
+            │   ├── BraTS20_Training_001_0000.nii.gz # T1
+            │   ├── BraTS20_Training_001_0001.nii.gz # T1ce , masked by 0 for missing situation 0
+            │   ├── BraTS20_Training_001_0002.nii.gz # T2   , masked by 0 for missing situation 0
+            │   ├── BraTS20_Training_001_0003.nii.gz # FLAIR, masked by 0 for missing situation 0
+            │   ├── BraTS20_Training_016_0000.nii.gz
+            │   ├── BraTS20_Training_016_0001.nii.gz
+            │   ├── BraTS20_Training_016_0002.nii.gz
+            │   ├── BraTS20_Training_016_0003.nii.gz
+            |   ...
+            ├── imagesTs_1
+            |   ...
+            ├── imagesTs_13
+            └── imagesTs_14
+
+
+2) Download the trained model [DeMoSeg_BraTS2020](https://drive.google.com/file/d/1WP7A9knH7xW-zI2WiYgodAkzjrun-svY/view?usp=drive_link) and put it anywhere.
+
+3) We release the [infer code](DeMoSeg/Infer.py), and using `modality` $\in[0,14]$ to specify the missing modality scenario. Before starting the inference, please develop the [relevant parameters](DeMoSeg/Infer.py/#L6) as below.
 
     ```python
     def predict_DeMoSeg(
         model='.../BraTS20_Model.pth', # model path
-        input_folder='...', # test images dir path
-        output_folder='...', # output dir path
+        input_folder='...', # test images folder path
+        output_folder='...', # output folder path
         modality=0 # missing modality situation index
-    )
+    ): 
+        pass
+
+    for modality in range(15):
+        print(f"*********\nstarting inferring the missing modality situation: {modality}\n*********")
+        predict_DeMoSeg(
+            model='.../BraTS20_Model.pth',
+            input_folder=f".../missing_imagesTs/imagesTs_{modality}",
+            output_folder=f'.../BraTS2020_Inference/missing_{modality}',
+            modality=modality
+        )
     ```
 
-3) Infer: 
-    ```python
-    python Infer.py
+4) Infer: 
+    ```bash
+    python .../DeMoSeg/Infer.py
     ```
 
-Our network and training codes will release later.
+5) Post-processsing and Evaluation. The post-processing is used following previous works, like RFNet, MAVP and GSS. We have also prepared **DSC, 95%HD, Sensitivity and Specificity** evaluation code for BraTS2020, BraTS2018 and BraTS2015 at [Evaluation](DeMoSeg/evaluation). Post-processsing and Evaluation codes are integrated, please set the inference output folder path and labels folder path at [infer_bathpath](DeMoSeg/evaluation/BraTS20_Eval.py/#L4) to obtain the results for each missing modality scenario. Finally, in order to get comparison statistical results as shown in the table above, please use [Final_result_statistic.py](DeMoSeg/evaluation/Final_result_statistic.py)
+
+    ```bash
+    python .../DeMoSeg/evaluation/BraTS20_Eval.py
+    python .../DeMoSeg/evaluation/Final_result_statistic.py
+    ```
+    
+
+Our FD, CSSA and RCR codes, training codes and BraTS2018, BraTS2015 models are comming soon.
