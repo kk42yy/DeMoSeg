@@ -52,7 +52,7 @@ The results with **bold** represent the best performance, and with <u>underline<
 ## 2_DeMoSeg
 
 We use three BraTS datasets that can be download at [BraTS](https://www.synapse.org/#!Synapse:syn27046444/wiki/616571), or [Kaggle](https://www.kaggle.com/datasets/awsaf49/brats20-dataset-training-validation?select=BraTS2020_ValidationData). Data splits are consistent with [RFNet](https://github.com/dyh127/RFNet/tree/main).
-Here we firstly release the infer code and models trained on BraTS.
+Here we firstly release the inference code and models trained on BraTS2020.
 
 ### 2.1 Inference of DeMoSeg
 
@@ -87,7 +87,7 @@ Here we firstly release the infer code and models trained on BraTS.
 
 2) Download the trained model [DeMoSeg_BraTS2020](https://drive.google.com/file/d/1WP7A9knH7xW-zI2WiYgodAkzjrun-svY/view?usp=drive_link) and put it anywhere.
 
-3) We release the [infer code](DeMoSeg/Infer.py), and using `modality` $\in[0,14]$ to specify the missing modality scenario. Before starting the inference, please develop the [relevant parameters](DeMoSeg/Infer.py/#L6) as below.
+3) We release the [infer code](DeMoSeg/Infer.py), and using `modality` $\in[0,14]$ to specify the missing modality scenario. Parts of inference codes refer to [nnU-Net V1](https://github.com/MIC-DKFZ/nnUNet/tree/nnunetv1). Before starting the inference, please develop the [relevant parameters](DeMoSeg/Infer.py/#L6) as below.
 
     ```python
     def predict_DeMoSeg(
@@ -120,5 +120,4 @@ Here we firstly release the infer code and models trained on BraTS.
     python .../DeMoSeg/evaluation/Final_result_statistic.py
     ```
     
-
 Our FD, CSSA and RCR codes, training codes and BraTS2018, BraTS2015 models are comming soon.
