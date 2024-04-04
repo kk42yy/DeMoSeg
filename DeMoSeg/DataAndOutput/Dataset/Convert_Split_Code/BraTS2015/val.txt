@@ -1,0 +1,12 @@
+HG_brats_tcia_pat120_0001
+HG_brats_tcia_pat131_0001
+HG_brats_tcia_pat133_0001
+HG_brats_2013_pat0025_1
+HG_brats_2013_pat0026_1
+HG_brats_tcia_pat322_0001
+HG_brats_tcia_pat328_0001
+HG_brats_tcia_pat399_0527
+HG_brats_tcia_pat471_0001
+LG_brats_2013_pat0013_1
+LG_brats_tcia_pat466_0001
+LG_brats_tcia_pat428_0001
