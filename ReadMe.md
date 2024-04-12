@@ -6,7 +6,6 @@
     <img src="BraTS20_18_15_Results\DeMoSeg.png"/ width=1000> <br />
 </p>
 </div>
-</div>
 
 DeMoSeg, i.e., **De**coupling the task of representing the ego and other **Mo**dalities for robust incomplete multi-modal **Seg**mentation, consists of three major components, (i) feature decoupling of self and mutual expression for each modality, (ii) feature compensation based on clinical prior knowledge, and (iii) a U-Net backbone for tumor segmentation. By decoupling features, the learning burden of modality adaptation is reduced. The proposed novel layer named CSSA and the feature compensation strategy named RCR enable cross-guidance among features effectively. Significant improvements in results on multiple BraTS datasets have validated our method. These novel contributions are vital for brain tumor segmentation under missing-modality scenarios.
 
@@ -37,8 +36,6 @@ The results with **bold** represent the best performance, and with <u>underline<
 <p align="left">
     <img src="BraTS20_18_15_Results\BraTS20.png"/ width=1000> <br />
 </p>
-</div>
-</div>
 
 ### BraTS2018
 #### BraTS2018 contains 285 training cases which are split into 199, 29 and 57 subjects for training, validation and test, respectively. We use a **three-fold validation** with the same split lists as previous works.
@@ -54,8 +51,6 @@ The results with **bold** represent the best performance, and with <u>underline<
 <p align="left">
     <img src="BraTS20_18_15_Results\BraTS18.png"/ width=1000> <br />
 </p>
-</div>
-</div>
 
 ### BraTS2015
 #### BraTS2015 contains 274 training cases which are split into 242, 12 and 20 subjects for training, validation and test, respectively.
@@ -71,8 +66,6 @@ The results with **bold** represent the best performance, and with <u>underline<
 <p align="left">
     <img src="BraTS20_18_15_Results\BraTS15.png"/ width=1000> <br />
 </p>
-</div>
-</div>
 
 ## 2 DeMoSeg
 
@@ -198,12 +191,11 @@ Our FD, CSSA and RCR codes, BraTS2018 and BraTS2015 models are coming soon.
 
 <div align="center">
 <h2>
-<img src="BraTS20_18_15_Results\BrainTumorDeMoSeg.png" width=100; style="vertical-align: middle;"> DeMoSeg_Slicer
+<img src="BraTS20_18_15_Results\BrainTumorDeMoSeg.png" width=50; style="vertical-align: middle;"> DeMoSeg_Slicer
 </h2>
 <p align="center">
     <img src="BraTS20_18_15_Results\DeMoSeg_Slicer.png"/ width=1000> <br />
 </p>
-</div>
 </div>
 
 **DeMoSeg_Slicer** is a useful tool built for 3D Slicer based on our DeMoSeg, capable of handling segmentation of gliomas with 15 missing modality scenarios. The relevant plugin codes are also coming soon.
