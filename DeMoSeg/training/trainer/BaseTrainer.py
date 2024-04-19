@@ -341,12 +341,3 @@ class Transforms_Dimension(MapTransform):
             ds = ds.permute(*new_transposed)
             d[key] = ds
         return d
-    
-if __name__ == "__main__":
-    demoseg_trainer = BasicTrainer(
-        task='2020', 
-        fold=0,
-        basepath='/memory/yangkaixiang/OrganSeg/DeMoSeg_Infer'
-    )
-    demoseg_trainer.initialze()
-    demoseg_trainer.run_train()
