@@ -18,9 +18,9 @@ class BasicPredictor(object):
     
     def initialize_network(self):
         self.network = Baseline(
-            input_channels=5 if self.task == '2015' else 4,
+            input_channels=4,
             base_num_features=32,
-            num_classes=4,
+            num_classes=5 if self.task == '2015' else 4,
             num_pool=5,
             modality=self.modality
         )
