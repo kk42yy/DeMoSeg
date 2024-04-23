@@ -7,5 +7,5 @@ if __name__ == "__main__":
         fold=0,
         basepath=os.path.split(os.path.abspath(__file__))[0]
     )
-    basic_trainer.initialze()
+    basic_trainer.initialize()
     basic_trainer.run_train()
