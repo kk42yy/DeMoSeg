@@ -192,7 +192,7 @@ class BasicTrainer(object):
 
         self.logger = logger
 
-    def initialze(self):
+    def initialize(self):
         self.get_datafile_augmentation()
         self.get_network()
         self.get_loss()
