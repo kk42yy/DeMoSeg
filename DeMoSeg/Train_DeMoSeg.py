@@ -7,5 +7,5 @@ if __name__ == "__main__":
         fold=0,
         basepath=os.path.split(os.path.abspath(__file__))[0]
     )
-    demoseg_trainer.initialze()
+    demoseg_trainer.initialize()
     demoseg_trainer.run_train()
