@@ -26,7 +26,7 @@ DeMoSeg, i.e., **De**coupling the task of representing the ego and other **Mo**d
 | Method                      | WT | TC | ET | 
 | --------------------------- | -------- | -------- | -------- |
 | RFNet                       |  86.98   |  78.23   |  61.47   |
-| mmFormer                    |  86.49   |  76.06   |  63.19   | 
+| mmFormer                    |  87.08   |  78.69   |  64.08   |
 | MAVP                        |  87.58   |  79.67   |  64.87   |
 | GSS                         |  88.09   |  79.24   |  66.42   | 
 | DeMoSeg                     |  **88.90**   |  **81.58**   |  **69.71**   | 
