@@ -26,7 +26,7 @@ DeMoSeg, i.e., **De**coupling the task of representing the ego and other **Mo**d
 | Method                      | WT | TC | ET | 
 | --------------------------- | -------- | -------- | -------- |
 | RFNet                       |  86.98   |  78.23   |  61.47   |
-| mmFormer                    |  87.08   |  78.69   |  64.08   |
+| mmFormer                    |  87.08   |  78.69   |  64.08   | 
 | MAVP                        |  87.58   |  79.67   |  64.87   |
 | GSS                         |  88.09   |  79.24   |  66.42   | 
 | DeMoSeg                     |  **88.90**   |  **81.58**   |  **69.71**   | 
@@ -139,6 +139,10 @@ Here we firstly release the inference code and models trained on BraTS2020.
 
 2) Download the trained model [DeMoSeg_BraTS2020](https://drive.google.com/file/d/1WP7A9knH7xW-zI2WiYgodAkzjrun-svY/view?usp=drive_link) and put it anywhere.
 
+    | DeMoSeg_BraTS2020 | DeMoSeg_BraTS2018 split1 | DeMoSeg_BraTS2018 split2 | DeMoSeg_BraTS2018 split3 | DeMoSeg_BraTS2015 |
+    |--------------------------- | -------- | -------- | -------- | -------- | 
+    |[model](https://drive.google.com/file/d/1WP7A9knH7xW-zI2WiYgodAkzjrun-svY/view?usp=drive_link) | [model](https://drive.google.com/file/d/1jln2UwYIgk-1eBRTCLlMLeErxem6o5-3/view?usp=drive_link) | [model](https://drive.google.com/file/d/1FHSBZYL_d2JWh-namx-rfZI3OxTqUavf/view?usp=drive_link) | [model](https://drive.google.com/file/d/1GiYHFfy_GfE-54WVXkUc_NpjFQybZUWv/view?usp=drive_link) | [model](https://drive.google.com/file/d/1_1FshjV_emD1meGbcmC-c4_PjEh6aTqN/view?usp=drive_link) |
+
 3) We release the [infer code](DeMoSeg/Infer_DeMoSeg.py), and using `modality` $\in[0,14]$ to specify the missing modality scenario. Parts of inference codes refer to [nnU-Net V1](https://github.com/MIC-DKFZ/nnUNet/tree/nnunetv1). Before starting the inference, please develop the [relevant parameters](DeMoSeg/Infer_DeMoSeg.py/#L10) as below.
 
     ```python
@@ -198,4 +202,7 @@ Our FD, CSSA and RCR codes, BraTS2018 and BraTS2015 models are coming soon.
 </p>
 </div>
 
-**DeMoSeg_Slicer** is a useful tool built for 3D Slicer based on our DeMoSeg, capable of handling segmentation of gliomas with 15 missing modality scenarios. The relevant plugin codes are also coming soon.
+**DeMoSeg_Slicer** is a useful tool built for 3D Slicer based on our DeMoSeg, capable of handling segmentation of gliomas with 15 missing modality scenarios. The relevant plugin codes are at [DeMoSeg_Slicer](https://github.com/kk42yy/DeMoSeg_Slicer).
+
+## Reference
+* [nnU-Net V1](https://github.com/MIC-DKFZ/nnUNet/tree/nnunetv1)
