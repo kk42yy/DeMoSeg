@@ -43,18 +43,37 @@ def producer(queue: Queue, data_loader, batch_size, transform, thread_id: int, s
                 else:
                     if item is None:
                         images, labels = [], []
-                        for _ in range(batch_size):
-                            item_b = data_loader[torch.randperm(len(data_loader))[0]]
-                            if transform is not None:
-                                item_b = apply_transform(transform, item_b)
-                            images.append(item_b['image'])
-                            labels.append(item_b['label'])
+                        try:
+                            for _ in range(batch_size):
+                                item_b = data_loader[torch.randperm(len(data_loader))[0]]
+                                if transform is not None:
+                                    item_b = apply_transform(transform, item_b)
+                                images.append(item_b['image'])
+                                labels.append(item_b['label'])
 
-                        item = {
-                            'image': torch.stack(images),
-                            'label': torch.stack(labels)
-                        }
-                        
+                            item = {
+                                'image': torch.stack(images),
+                                'label': torch.stack(labels)
+                            }
+                        except:
+                            for _ in range(batch_size):
+                                item_b = data_loader[torch.randperm(len(data_loader))[0]]
+                                
+                                # monai trans
+                                if transform is not None:
+                                    monai_trans, _ = transform
+                                    item_b = apply_transform(monai_trans, item_b)
+                                    
+                                images.append(item_b['data'])
+                                labels.append(item_b['seg'])
+
+                            item = {
+                                'data': np.stack(images),
+                                'seg': np.stack(labels)
+                            }
+                            
+                            # nnunet trans
+                            item = transform[1](**item)
 
                     if abort_event.is_set():
                         return
