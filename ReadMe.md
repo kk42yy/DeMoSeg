@@ -87,7 +87,7 @@ Here we firstly release the inference code and models trained on BraTS2020.
 
 2) Dataset:
 
-    - Downloading original BraTS2020, BraTS2018 and BraTS2015.
+    - Downloading original [BraTS2020](https://www.synapse.org/#!Synapse:syn27046444/wiki/616571), [BraTS2018](https://www.kaggle.com/datasets/anassbenfares/brats2018) and [BraTS2015](https://www.kaggle.com/datasets/xxc025/brats2015).
     - Turn images format into NIFTI, using [BraTS20XX_DataConvert.py](DeMoSeg/DataAndOutput/Dataset/Convert_Split_Code/BraTS2020/BraTS2020_DataConvert.py), the [Original Path](DeMoSeg/DataAndOutput/Dataset/Convert_Split_Code/BraTS2020/BraTS2020_DataConvert.py/#L101) should be set firstly.
 
 ### 2.2 DeMoSeg Training
@@ -137,7 +137,7 @@ Here we firstly release the inference code and models trained on BraTS2020.
             └── imagesTs_14
 
 
-2) Download the trained model [DeMoSeg_BraTS2020](https://drive.google.com/file/d/1WP7A9knH7xW-zI2WiYgodAkzjrun-svY/view?usp=drive_link) and put it anywhere.
+2) Download the trained model and put it anywhere.
 
     | DeMoSeg_BraTS2020 | DeMoSeg_BraTS2018 split1 | DeMoSeg_BraTS2018 split2 | DeMoSeg_BraTS2018 split3 | DeMoSeg_BraTS2015 |
     |--------------------------- | -------- | -------- | -------- | -------- | 
