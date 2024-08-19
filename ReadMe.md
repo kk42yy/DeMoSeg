@@ -206,3 +206,14 @@ Our FD, CSSA and RCR codes, BraTS2018 and BraTS2015 models are coming soon.
 
 ## Reference
 * [nnU-Net V1](https://github.com/MIC-DKFZ/nnUNet/tree/nnunetv1)
+
+# Citations
+If you find this repository useful, please consider citing our paper:
+```
+@article{yang2024demoseg,
+  title={Decoupling Feature Representations of Ego and Other Modalities for Incomplete Multi-modal Brain Tumor Segmentation},
+  author={Yang, Kaixiang and Shan, Wenqi and Li, Xudong and Wang, Xuan and Yang, Xikai and Wang, Xi and Heng, Pheng-Ann and Li, Qiang and Wang, Zhiwei},
+  journal={arXiv preprint arXiv:2408.08708},
+  year={2024}
+}
+```
