@@ -1,0 +1,21 @@
+{
+    "name": "BraTS2020",
+    "description": "BraTS2020 Training Dataset",
+    "reference": "see challenge website",
+    "licence": "see challenge website",
+    "release": "l.l 14/08/2018",
+    "labels": {
+        "background": 0,
+        "necrotic tumor core": 1,
+        "peritumoral edematous/invaded tissue": 2,
+        "Gd-enhancing tumor": 3
+    },
+    "numTraining": 269,
+    "channel_names": {
+        "0": "T1",
+        "1": "T1ce",
+        "2": "T2",
+        "3": "FLAIR"
+    },
+    "file_ending": ".nii.gz"
+}
