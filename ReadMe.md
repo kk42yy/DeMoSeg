@@ -210,10 +210,12 @@ Our FD, CSSA and RCR codes, BraTS2018 and BraTS2015 models are coming soon.
 # Citations
 If you find this repository useful, please consider citing our paper:
 ```
-@article{yang2024demoseg,
+@inproceedings{yang2024decoupling,
   title={Decoupling Feature Representations of Ego and Other Modalities for Incomplete Multi-modal Brain Tumor Segmentation},
   author={Yang, Kaixiang and Shan, Wenqi and Li, Xudong and Wang, Xuan and Yang, Xikai and Wang, Xi and Heng, Pheng-Ann and Li, Qiang and Wang, Zhiwei},
-  journal={arXiv preprint arXiv:2408.08708},
-  year={2024}
+  booktitle={2024 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)},
+  pages={3897--3902},
+  year={2024},
+  organization={IEEE}
 }
 ```
